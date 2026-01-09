@@ -19,132 +19,162 @@
             margin: 0;
             padding: 20px;
             box-sizing: border-box;
-            overflow: hidden; /* Evita scroll durante la animación */
+            text-align: center;
         }
 
-        /* Definición de la Animación de Aparición */
+        /* Animaciones de entrada */
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Clase base para animar */
-        .reveal {
-            opacity: 0;
-            animation: fadeInUp 0.8s ease forwards;
-        }
-
-        /* Delays para que aparezcan uno tras otro */
+        .reveal { opacity: 0; animation: fadeInUp 0.8s ease forwards; }
         .pic-anim { animation-delay: 0.2s; }
         .name-anim { animation-delay: 0.4s; }
         .sub-anim { animation-delay: 0.5s; }
         .btn-anim { animation-delay: 0.7s; }
-        .icons-anim { animation-delay: 0.9s; }
+        .giveaway-anim { animation-delay: 0.8s; }
+        .icons-anim { animation-delay: 1s; }
+        .sponsor-anim { animation-delay: 1.2s; }
 
-        /* Foto de Perfil */
         .profile-pic {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            border: 3px solid #1a1a1a;
-            margin-bottom: 15px;
-            object-fit: cover;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            width: 100px; height: 100px;
+            border-radius: 50%; border: 3px solid #1a1a1a;
+            margin-bottom: 15px; object-fit: cover;
         }
 
-        h1 {
-            margin: 0;
-            font-size: 1.8rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-        }
+        h1 { margin: 0; font-size: 1.8rem; font-weight: 700; width: 100%; }
+        .subtitle { color: #888; margin-bottom: 30px; width: 100%; }
 
-        .subtitle {
-            color: #888;
-            font-size: 1rem;
-            margin-top: 5px;
-            margin-bottom: 30px;
-        }
-
-        /* Botón de Contacto */
+        /* Botón Base (Contacto) */
         .contact-button {
             background-color: #1a1a1a;
-            width: 100%;
+            width: 100%; 
             max-width: 320px;
-            padding: 16px 20px;
+            padding: 16px 20px; 
             border-radius: 14px;
-            display: flex;
+            display: flex; 
             justify-content: space-between;
-            align-items: center;
+            align-items: center; 
             text-decoration: none;
-            color: white;
+            color: white; 
             font-weight: 600;
-            margin-bottom: 40px;
+            margin: 0 auto 15px auto; 
             border: 1px solid #222;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: 0.3s;
+            cursor: pointer; 
+            font-family: inherit;
+            font-size: 1rem;
+            box-sizing: border-box;
         }
 
         .contact-button:hover {
             transform: translateY(-5px);
             background-color: #252525;
-            border-color: #444;
-            box-shadow: 0 10px 20px rgba(255, 255, 255, 0.05);
         }
 
-        /* Contenedor de Redes */
-        .social-icons {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
+        /* --- BOTÓN SORTEO (Degradado Rojo/Negro, Mismo grosor que contacto) --- */
+        .giveaway-wrapper { 
+            width: 100%; 
+            max-width: 380px; 
+            display: flex; 
+            justify-content: center; 
+            margin: 0 auto 18px auto; /* Acercado a las redes */
         }
 
-        .social-icons a {
-            color: white;
-            font-size: 1.8rem;
-            text-decoration: none;
-            transition: all 0.3s ease;
+        .giveaway-button {
+            background: linear-gradient(45deg, #4d0000, #000000) !important;
+            border: 1px solid #700000 !important;
+            max-width: 380px;
+            padding: 16px 25px; /* Mismo padding vertical (grosor) que contacto */
+            font-size: 1rem;
+            font-weight: 600;
         }
 
-        .social-icons a:hover {
-            transform: scale(1.2) translateY(-3px);
-            filter: drop-shadow(0 5px 10px rgba(255, 255, 255, 0.2));
+        @keyframes shake-fix {
+            0% { transform: translateY(-5px) rotate(0deg); }
+            25% { transform: translateY(-5px) rotate(1deg) translateX(2px); }
+            50% { transform: translateY(-5px) rotate(-1deg) translateX(-2px); }
+            75% { transform: translateY(-5px) rotate(1deg) translateX(2px); }
+            100% { transform: translateY(-5px) rotate(0deg); }
         }
 
-        /* Colores específicos */
+        .giveaway-button:hover {
+            animation: shake-fix 0.2s infinite linear !important;
+            background: linear-gradient(45deg, #7a0000, #0d0d0d) !important;
+            border-color: #ff3333 !important;
+        }
+
+        /* --- REDES SOCIALES (Más cerca del sorteo) --- */
+        .social-icons { 
+            display: flex; 
+            gap: 20px; 
+            margin: 0 auto 25px auto; 
+            justify-content: center; 
+            width: 100%;
+        }
+        .social-icons a { color: white; font-size: 1.8rem; transition: 0.3s; text-decoration: none; }
+        .social-icons a:hover { transform: scale(1.2) translateY(-3px); }
+        
+        /* Colores de Hover */
         .fa-twitch:hover { color: #9146FF; }
         .fa-youtube:hover { color: #FF0000; }
         .fa-instagram:hover { color: #E1306C; }
-        .fa-tiktok:hover { color: #ff0050; } /* Color TikTok */
+        .fa-tiktok:hover { color: #00f2ea; }
         .fa-x-twitter:hover { color: #ffffff; }
         .fa-discord:hover { color: #5865F2; }
 
-        @media (max-width: 480px) {
-            h1 { font-size: 1.5rem; }
-            .profile-pic { width: 90px; height: 90px; }
-            .contact-button { width: 90%; }
-            .social-icons { gap: 15px; }
-            .social-icons a { font-size: 1.6rem; }
+        /* --- PATROCINADOR IMAGEN (Logo Centrado y funcional) --- */
+        .sponsor-section { 
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .sponsor-title { 
+            font-size: 0.6rem; 
+            text-transform: uppercase; 
+            color: #444; 
+            margin-bottom: 12px; 
+            display: block; 
+            letter-spacing: 2px;
+        }
+        .sponsor-img { 
+            width: 160px; /* Tamaño controlado */
+            opacity: 0.5; 
+            transition: 0.3s; 
+            filter: grayscale(1); 
+        }
+        .sponsor-img:hover { 
+            opacity: 1; 
+            filter: grayscale(0); 
+            transform: scale(1.05); 
+        }
+
+        @media (max-width: 480px) { 
+            .contact-button { width: 90%; } 
+            .giveaway-wrapper { width: 95%; }
         }
     </style>
 </head>
 <body>
 
-    <img src="FenorCRY.png" alt="Fenor" class="profile-pic reveal pic-anim">
+    <img src="foto.jpg" alt="Fenor" class="profile-pic reveal pic-anim">
 
     <h1 class="reveal name-anim">Fenor</h1>
     <p class="subtitle reveal sub-anim">Transmitidor lamentable</p>
 
-    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=fenorbusiness@gmail.com" target="_blank" class="contact-button reveal btn-anim">
-    <span>Contacto</span>
-    <i class="fa-regular fa-envelope"></i>
-    </a>
+    <button onclick="copiarCorreo()" class="contact-button reveal btn-anim">
+        <span id="texto-contacto">Contacto</span>
+        <i class="fa-regular fa-envelope" id="icono-contacto"></i>
+    </button>
+
+    <div class="giveaway-wrapper reveal giveaway-anim">
+        <a href="LINK_SORTEO" target="_blank" class="contact-button giveaway-button">
+            <span>Sorteo Inactivo</span>
+            <i class="fa-solid fa-gift"></i>
+        </a>
+    </div>
 
     <div class="social-icons reveal icons-anim">
         <a href="https://www.twitch.tv/fenor" target="_blank"><i class="fa-brands fa-twitch"></i></a>
@@ -155,7 +185,32 @@
         <a href="https://discord.gg/qF7S2wAMwj" target="_blank"><i class="fa-brands fa-discord"></i></a>
     </div>
 
+    <div class="sponsor-section reveal sponsor-anim">
+        <span class="sponsor-title">Patrocinadores</span>
+        <a href="https://www.instant-gaming.com/?igr=fenor" target="_blank">
+            <img src="InstantGaming.png" alt="Instant Gaming" class="sponsor-img">
+        </a>
+    </div>
+
+    <script>
+    function copiarCorreo() {
+        const email = "fenorbusiness@gmail.com"; 
+        navigator.clipboard.writeText(email);
+        const texto = document.getElementById("texto-contacto");
+        const icono = document.getElementById("icono-contacto");
+        texto.innerText = "¡Copiado!";
+        icono.className = "fa-solid fa-check";
+        icono.style.color = "#00f2ea";
+        setTimeout(() => {
+            texto.innerText = "Contacto";
+            icono.className = "fa-regular fa-envelope";
+            icono.style.color = "white";
+        }, 2000);
+    }
+    </script>
+
 </body>
 </html>
+
 
 
